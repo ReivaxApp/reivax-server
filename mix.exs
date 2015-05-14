@@ -14,7 +14,7 @@ defmodule Reivax.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger, :extwitter],
+    [applications: [:logger, :extwitter, :rss],
      env: [serach: []]]
   end
 
@@ -30,7 +30,8 @@ defmodule Reivax.Mixfile do
   defp deps do
     [
         {:oauth, github: "tim/erlang-oauth"},
-        {:extwitter, "~> 0.4"}
+        {:extwitter, "~> 0.4"},
+        {:rss, "~> 0.2.1"}
     ]
   end
 end

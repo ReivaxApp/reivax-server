@@ -1,4 +1,6 @@
 defmodule Reivax.Consumer do
+  @sleep_time 60000
+
   @doc """
   Start the agent, with a search
   """
@@ -10,10 +12,17 @@ defmodule Reivax.Consumer do
   Consume twitter to a file
   """
   defp consume_to_file([{search_term, file} | tail]) do
-    search_twitter(search_term)
-    |> Enum.each(fn(x) -> File.write("#{file}.txt", x.text) end)
-    :timer.sleep(10000)
+    channel = RSS.channel("Reivax", "http://dans.ton.cul", "Lol", "1979-01-01", "lang (fr-fr)")
+    items = search_twitter(search_term)
+    |> Enum.map(fn(x) -> create_items(x) end)
+    feed = RSS.feed(channel, items)
+    File.write("#{file}.rss", feed)
+    :timer.sleep(@sleep_time)
     consume_to_file(tail ++ [{search_term, file}])
+  end
+
+  defp create_items(tweet) do
+    RSS.item(tweet.text, tweet.text, tweet.created_at, "https://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id_str}", "lol")
   end
 
   defp search_twitter(search_term)do
