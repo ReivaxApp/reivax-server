@@ -22,8 +22,8 @@ defmodule Reivax.Manager do
   @doc """
   Ensures there is a bucket associated to the given `name` in `server`.
   """
-  def create(server, name, search) do
-    GenServer.cast(server, {:create, name, search})
+  def create(server, name) do
+    GenServer.cast(server, {:create, name})
   end
 
   @doc """
@@ -47,11 +47,11 @@ defmodule Reivax.Manager do
     {:stop, :normal, :ok, state}
   end
 
-  def handle_cast({:create, name, search}, names) do
+  def handle_cast({:create, name}, names) do
     if HashDict.has_key?(names, name) do
       {:noreply, names}
     else
-      {:ok, consumer} = Reivax.Consumer.start_link(search)
+      {:ok, consumer} = Reivax.Consumer.start_link
       {:noreply, HashDict.put(names, name, consumer)}
     end
   end

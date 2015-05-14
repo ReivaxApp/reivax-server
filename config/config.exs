@@ -29,3 +29,13 @@ config :ex_twitter, :oauth, [
   access_token: "changeme",
   access_token_secret: "changeme"
 ]
+
+config :reivax, :search, [
+  {["recherche développeur",
+    "recherche développeur front-end",
+    "recherche développeur back-end",
+    "recherche développeur ruby",
+    "recherche développeur site web",
+    "recherche développeur site internet",
+    "recherche développeur freelance"],"dev"}
+]
