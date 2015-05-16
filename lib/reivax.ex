@@ -1,2 +1,0 @@
-defmodule Reivax do
-end

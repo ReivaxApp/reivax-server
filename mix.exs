@@ -1,21 +1,9 @@
-defmodule Reivax.Mixfile do
+defmodule ReivaxServerUmbrella.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :reivaxserver,
-     version: "0.0.1",
-     elixir: "~> 1.0",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
+    [apps_path: "apps",
      deps: deps]
-  end
-
-  # Configuration for the OTP application
-  #
-  # Type `mix help compile.app` for more information
-  def application do
-    [applications: [:logger, :extwitter, :rss],
-     env: [serach: []]]
   end
 
   # Dependencies can be Hex packages:
@@ -26,12 +14,11 @@ defmodule Reivax.Mixfile do
   #
   #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
   #
-  # Type `mix help deps` for more examples and options
+  # Type `mix help deps` for more examples and options.
+  #
+  # Dependencies listed here are available only for this project
+  # and cannot be accessed from applications inside the apps folder
   defp deps do
-    [
-        {:oauth, github: "tim/erlang-oauth"},
-        {:extwitter, "~> 0.4"},
-        {:rss, "~> 0.2.1"}
-    ]
+    []
   end
 end

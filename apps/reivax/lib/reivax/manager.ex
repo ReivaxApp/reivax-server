@@ -7,7 +7,9 @@ defmodule Reivax.Manager do
   Start the manager
   """
   def start_link(opts \\ []) do
-    GenServer.start_link(__MODULE__, :ok, opts)
+    {:ok, pid} = GenServer.start_link(__MODULE__, :ok, opts)
+    Reivax.Manager.create(pid, "acoolname")
+    {:ok, pid }
   end
 
   @doc """

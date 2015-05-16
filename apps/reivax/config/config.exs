@@ -22,19 +22,20 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
-# This file is responsible for configuring your application
-# and its dependencies with the aid of the Mix.Config module.
-use Mix.Config
 
-# The configuration defined here will only affect the dependencies
-# in the apps directory when commands are executed from the umbrella
-# project. For this reason, it is preferred to configure each child
-# application directly and import its configuration, as done below.
-import_config "../apps/*/config/config.exs"
+config :ex_twitter, :oauth, [
+  consumer_key:        "p8HUeHPmfkfqi79OF9zl8VYiN",
+  consumer_secret:     "Rtbi0WEMAHtroiQOKYO8Mx51oKGkYhF0bEjUhqWZIsMiaaREsf",
+  access_token:        "18373477-GXHzUu52dRWkT3gAiYwa6jjF7H7JAgTxkruQwxFJq",
+  access_token_secret: "2KhSVsBK4UIrOQuB18NGYWoog2EW03BbD561mhdzEQEiL"
+]
 
-# Sample configuration (overrides the imported configuration above):
-#
-#     config :logger, :console,
-#       level: :info,
-#       format: "$date $time [$level] $metadata$message\n",
-#       metadata: [:user_id]
+config :reivax, :search, [
+  {["recherche développeur",
+    "recherche développeur front-end",
+    "recherche développeur back-end",
+    "recherche développeur ruby",
+    "recherche développeur site web",
+    "recherche développeur site internet",
+    "recherche développeur freelance"],"dev"}
+]

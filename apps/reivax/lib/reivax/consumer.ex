@@ -1,5 +1,5 @@
 defmodule Reivax.Consumer do
-  @sleep_time 60000
+  @sleep_time 10000
 
   @doc """
   Start the agent, with a search
@@ -22,7 +22,7 @@ defmodule Reivax.Consumer do
   end
 
   defp create_items(tweet) do
-    RSS.item(tweet.text, tweet.text, tweet.created_at, "https://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id_str}", "lol")
+    RSS.item(tweet.text, tweet.text, tweet.created_at, "https://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id_str}", tweet.id_str)
   end
 
   defp search_twitter(search_term)do
